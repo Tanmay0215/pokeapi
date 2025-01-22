@@ -33,7 +33,7 @@ function App() {
     let i = 1;
     const fetchPokemons = async () => {
       let fetchedPokemons = [];
-      while (i < 200) {
+      while (i < 300) {
         try {
           const response = await fetch('https://pokeapi.co/api/v2/pokemon-form/' + i);
           const data = await response.json();
