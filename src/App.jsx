@@ -8,6 +8,26 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   const types = ['All', 'Normal', 'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark', 'Steel', 'Fairy'];
+  // const typeColors = {
+  //   normal: 'bg-gray-300',
+  //   fighting: 'bg-red-300',
+  //   flying: 'bg-blue-300',
+  //   poison: 'bg-violet-300',
+  //   ground: 'bg-yellow-300',
+  //   rock: 'bg-gray-500',
+  //   bug: 'bg-green-300',
+  //   ghost: 'bg-indigo-300',
+  //   fire: 'bg-red-500',
+  //   water: 'bg-blue-500',
+  //   grass: 'bg-green-500',
+  //   electric: 'bg-yellow-500',
+  //   psychic: 'bg-purple-600',
+  //   ice: 'bg-blue-200',
+  //   dragon: 'bg-red-800',
+  //   dark: 'bg-gray-800',
+  //   steel: 'bg-gray-400',
+  //   fairy: 'bg-pink-300'
+  // };
 
   useEffect(() => {
     let i = 1;
@@ -43,7 +63,7 @@ function App() {
   return (
     <div className={darkMode ? "min-h-screen bg-gray-900 text-white" : "min-h-screen bg-gray-100 text-black"}>
       <header className="p-4 text-center text-2xl font-bold flex justify-between items-center">
-        <span>Pokémon Gallery</span>
+        <span className='font-pokemonSolid'>Pokémon Gallery</span>
         <button onClick={() => setDarkMode(!darkMode)} className="p-2 bg-gray-800 text-white rounded-full">
           {darkMode ? 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
@@ -69,7 +89,7 @@ function App() {
       <div className="grid grid-cols-1 p-5 md:grid-cols-6 gap-4">
         {filteredPokemons.map((pokemon, index) => {
           return (
-            <div key={index} className={darkMode ? 'bg-gray-800 p-4 rounded-lg flex flex-col items-center shadow-lg transform transition duration-500 hover:scale-105' : 'bg-white p-4 rounded-lg flex flex-col items-center shadow-lg transform transition duration-500 hover:scale-105'}>
+            <div key={index} className={darkMode ? 'bg-gray-800 bg-opacity-50 backdrop-blur-lg p-4 rounded-lg flex flex-col items-center shadow-lg transform transition duration-500 hover:scale-105' : 'bg-white bg-opacity-50 backdrop-blur-lg p-4 rounded-lg flex flex-col items-center shadow-md transform transition duration-500 hover:scale-105'}>
               <img src={pokemon.sprites.front_default} alt="" className="w-20 h-20" />
               <div className="text-md p-2 uppercase font-mono">{pokemon.name}</div>
               <div className="flex flex-wrap justify-center">
@@ -93,7 +113,7 @@ function App() {
       <footer className='text-center p-4 text-sm'>
         This project was developer using <Link to='https://pokeapi.co/'>PokeAPI</Link>
         {/* <img src="https://pokeapi.co/static/pokeapi_256.3fa72200.png" alt="pokeapi" /> */}
-      </footer>
+      </footer> 
     </div>
   );
 }

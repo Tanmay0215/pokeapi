@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        pokemonSolid: ['PokemonSolid', 'sans-serif'],
+        pokemonHollow: ['PokemonHollow', 'sans-serif'],
+      }
+    },
   },
   plugins: [],
 }

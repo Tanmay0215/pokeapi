@@ -1,9 +1,9 @@
-import React from 'react'
-import { useParams } from 'react-router'
+import { useParams } from "react-router-dom"
 
-const Type = () => {
-    const type = useParams();
-    return (
+function Type() {
+  const type = useParams().id;
+
+  return (
     <div>
       
     </div>
