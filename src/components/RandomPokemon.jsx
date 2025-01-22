@@ -22,8 +22,9 @@ function RandomPokemon() {
   }, [])
 
   return (
-    <div>
+    <div className='flex flex-col items-center'>
       <img src={pokemon.sprite} alt={pokemon.name} className='h-52' />
+      <h1 className='capitalize text-2xl -mt-5'>{pokemon.name}</h1>
     </div>
   )
 }

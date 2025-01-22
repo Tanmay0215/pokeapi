@@ -1,4 +1,4 @@
-const types = []
+export const types = []
 
 fetch('https://pokeapi.co/api/v2/type/')
   .then((response) => response.json())
@@ -12,7 +12,7 @@ fetch('https://pokeapi.co/api/v2/type/')
     return
   })
 
-const TypeColor = {
+export const TypeColor = {
   normal: 'bg-gray-300',
   fighting: 'bg-red-300',
   flying: 'bg-blue-300',
@@ -34,5 +34,3 @@ const TypeColor = {
   stellar: 'bg-yellow-400',
   unknown: 'bg-gray-600',
 }
-
-export const TypeColors = TypeColor
