@@ -1,24 +1,30 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import Navbar from '../components/Navbar'
+import { TypeColor } from '../context/Types'
 
 function Home() {
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true)
   const [selectedType, setSelectedType] = useState('all')
+  
+  const types = ['All', 'Normal', 'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark', 'Steel', 'Fairy']
 
-  const types = ['All', 'Normal', 'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark', 'Steel', 'Fairy'];
   useEffect(() => {
     let i = 1
     const fetchPokemons = async () => {
       let fetchedPokemons = []
-      while (i < 300) {
+      while (i < 40) {
         try {
           const response = await fetch(
-            'https://pokeapi.co/api/v2/pokemon-form/' + i
+            'https://pokeapi.co/api/v2/pokemon/' + i
           )
           const data = await response.json()
-          fetchedPokemons.push(data)
+          fetchedPokemons.push({
+            name: data.name,
+            sprite: data.sprites.front_default,
+            types: data.types
+          })
         } catch (err) {
           console.log(err)
         }
@@ -35,8 +41,8 @@ function Home() {
     return (
       <div className="h-screen flex justify-center items-center">
         <img
-          src="https://assets-v2.lottiefiles.com/a/d12e3930-1177-11ee-b96d-0be88c37ea6a/tt039ohVD2.gif"
-          alt=""
+          src="../assets/loader.gif"
+          alt="Loading..."
           className="h-32 w-32"
         />
       </div>
@@ -54,13 +60,13 @@ function Home() {
     <div className="min-h-screen bg-zinc-100">
       <Navbar />
       <div className="flex p-5">
-        <div className="flex flex-wrap gap-2 md:gap-2">
+        <div className="flex flex-wrap gap-2">
           {types.map((type, index) => {
             return (
               <button
                 key={index}
                 onClick={() => setSelectedType(type.toLowerCase())}
-                className="p-2 rounded-lg shadow-md"
+                className="p-2 rounded-lg text-sm shadow-md"
               >
                 {type}
               </button>
@@ -68,109 +74,26 @@ function Home() {
           })}
         </div>
       </div>
-      <div className="grid grid-cols-1 p-5 md:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 gap-3 p-5 md:grid-cols-6 md:gap-4">
         {filteredPokemons.map((pokemon, index) => {
           return (
             <div
               key={index}
-              className="p-4 rounded-lg flex flex-col items-center shadow-md transform transition duration-500 hover:scale-105"
+              className={`${TypeColor[pokemon.types[0].type.name]} bg-opacity-40 p-4 rounded-lg flex flex-col items-center shadow-md transform transition duration-500 hover:scale-105`}
             >
               <img
-                src={pokemon.sprites.front_default}
-                alt=""
-                className="w-20 h-20"
+                src={pokemon.sprite}
+                alt={pokemon.name}
               />
-              <div className="text-md p-2 uppercase font-mono">
+              <div className="text-md p-2 uppercase font-semibold">
                 {pokemon.name}
               </div>
-              <div className="flex flex-wrap justify-center">
+              <div className="flex flex-wrap justify-center capitalize">
                 {pokemon.types.map((type, index) => {
-                  if (type.type.name === 'fire')
                     return (
                       <span
                         key={index}
-                        className="bg-red-300 px-3 py-1 m-1 rounded-full text-xs"
-                      >
-                        {type.type.name}
-                      </span>
-                    )
-                  else if (type.type.name === 'bug')
-                    return (
-                      <span
-                        key={index}
-                        className="bg-green-300 px-3 py-1 m-1 rounded-full text-xs"
-                      >
-                        {type.type.name}
-                      </span>
-                    )
-                  else if (type.type.name === 'poison')
-                    return (
-                      <span
-                        key={index}
-                        className="bg-violet-300 px-3 py-1 m-1 rounded-full text-xs"
-                      >
-                        {type.type.name}
-                      </span>
-                    )
-                  else if (type.type.name === 'psychic')
-                    return (
-                      <span
-                        key={index}
-                        className="bg-purple-600 px-3 py-1 m-1 rounded-full text-xs"
-                      >
-                        {type.type.name}
-                      </span>
-                    )
-                  else if (type.type.name === 'grass')
-                    return (
-                      <span
-                        key={index}
-                        className="bg-green-500 px-3 py-1 m-1 rounded-full text-xs"
-                      >
-                        {type.type.name}
-                      </span>
-                    )
-                  else if (type.type.name === 'electric')
-                    return (
-                      <span
-                        key={index}
-                        className="bg-yellow-300 px-3 py-1 m-1 rounded-full text-xs"
-                      >
-                        {type.type.name}
-                      </span>
-                    )
-                  else if (type.type.name === 'fairy')
-                    return (
-                      <span
-                        key={index}
-                        className="bg-pink-300 px-3 py-1 m-1 rounded-full text-xs"
-                      >
-                        {type.type.name}
-                      </span>
-                    )
-                  else if (type.type.name === 'water')
-                    return (
-                      <span
-                        key={index}
-                        className="bg-blue-300 px-3 py-1 m-1 rounded-full text-xs"
-                      >
-                        {type.type.name}
-                      </span>
-                    )
-                  else if (type.type.name === 'dark')
-                    return (
-                      <span
-                        key={index}
-                        className="bg-gray-500 px-3 py-1 m-1 rounded-full text-xs"
-                      >
-                        {type.type.name}
-                      </span>
-                    )
-                  else
-                    return (
-                      <span
-                        key={index}
-                        className="bg-gray-300 px-3 py-1 m-1 rounded-full text-xs"
+                        className={`${TypeColor[type.type.name]} px-3 py-1 m-1 rounded-full text-xs`}
                       >
                         {type.type.name}
                       </span>

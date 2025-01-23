@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        manrope: ['Manrope', 'sans-serif'],
         pokemonSolid: ['PokemonSolid', 'sans-serif'],
         pokemonHollow: ['PokemonHollow', 'sans-serif'],
       }

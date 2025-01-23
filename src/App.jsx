@@ -6,7 +6,7 @@ import NotFound from './pages/NotFound.jsx'
 
 function App() {
   return (
-    <div>
+    <div className='min-h-screen font-manrope'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/random" element={<Random />} />
