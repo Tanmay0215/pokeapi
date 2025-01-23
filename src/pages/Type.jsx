@@ -4,6 +4,7 @@ import { TypeColor } from '../context/Types'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { types } from '../context/Types'
+import Loader from '../components/Loader'
 
 function Type() {
   const [loading, setLoading] = useState(true)
@@ -33,9 +34,7 @@ function Type() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <img src="../assets/loader.gif" alt="" />
-      </div>
+      <Loader />
     )
   }
 

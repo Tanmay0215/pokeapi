@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { TypeColor } from '../context/Types'
+import Loader from '../components/Loader'
 
 function Home() {
   const [pokemons, setPokemons] = useState([])
@@ -39,12 +40,7 @@ function Home() {
 
   if (loading) {
     return (
-      <div className="h-screen flex justify-center items-center">
-        <img
-          src="../assets/loader.gif"
-          alt="Loading..."
-        />
-      </div>
+      <Loader />
     )
   }
 
