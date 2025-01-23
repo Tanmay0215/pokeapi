@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import { TypeColor } from '../context/Types'
 
 function Home() {
@@ -43,7 +43,6 @@ function Home() {
         <img
           src="../assets/loader.gif"
           alt="Loading..."
-          className="h-32 w-32"
         />
       </div>
     )
@@ -104,11 +103,7 @@ function Home() {
           )
         })}
       </div>
-      <footer className="text-center p-4 text-sm">
-        This project was developer using{' '}
-        <Link to="https://pokeapi.co/">PokeAPI</Link>
-        {/* <img src="https://pokeapi.co/static/pokeapi_256.3fa72200.png" alt="pokeapi" /> */}
-      </footer>
+      <Footer />
     </div>
   )
 }

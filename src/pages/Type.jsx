@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { TypeColor } from '../context/Types'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import { types } from '../context/Types'
 
 function Type() {
@@ -41,9 +42,9 @@ function Type() {
   const moves = data.moves.map((move) => move.name)
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div>
       <Navbar />
-      <h1 className={`text-center text-4xl font-bold p-8 uppercase`}>{type}</h1>
+      <h1 className={`text-center text-4xl font-bold p-8 uppercase text-zinc-200 ${TypeColor[type]}`}>{type}</h1>
         <h2 className="text-center text-3xl p-5 font-semibold">Attacks</h2>
         <div className="flex flex-wrap gap-2 p-5 justify-center">
           {moves.map((move) => (
@@ -56,7 +57,7 @@ function Type() {
           ))}
         </div>
         <h2 className="text-3xl text-center p-5 font-semibold">Pokemons</h2>
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4 p-5">
           {data.pokemon.map((pokemon) => (
             <div
               key={pokemon.pokemon.name}
@@ -66,6 +67,7 @@ function Type() {
             </div>
           ))}
       </div>
+      <Footer />
     </div>
   )
 }
