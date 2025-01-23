@@ -52,7 +52,7 @@ function Type() {
               key={move}
               className={`px-3 py-1 ${TypeColor[type]} text-white rounded-full text-sm capitalize`}
             >
-              {move}
+              {move.replace('-', ' ')}
             </div>
           ))}
         </div>
