@@ -12,11 +12,10 @@ function Home() {
   const types = ['All', 'Normal', 'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark', 'Steel', 'Fairy']
 
   useEffect(() => {
-    let i = 1
     const fetchPokemons = async () => {
       let fetchedPokemons = []
-      while (i < 40) {
-        try {
+      for (let i = 1; i <= 40; i++) {
+      try {
           const response = await fetch(
             'https://pokeapi.co/api/v2/pokemon/' + i
           )

@@ -8,7 +8,7 @@ import Loader from '../components/Loader'
 
 function Type() {
   const [loading, setLoading] = useState(true)
-  const [data, setData] = useState({})
+  const [typeData, setTypeData] = useState({})
   const type = useParams().id
 
   const typeIndex = types.indexOf(type) + 1
@@ -19,7 +19,13 @@ function Type() {
         `https://pokeapi.co/api/v2/type/${typeIndex}`
       )
       const data = await response.json()
-      setData({ ...data })
+      // setData({ ...data })
+      setTypeData({
+        ...data, 
+        moves: data.moves.map(move => move.name).slice(0, 10),
+        pokemons: data.pokemon.map(pokemon => pokemon.pokemon.name).slice(0, 10)
+      })
+      console.log()
       setLoading(false)
     } catch (error) {
       console.error('Error fetching data:', error)
@@ -29,7 +35,6 @@ function Type() {
 
   useEffect(() => {
     fetchType()
-    console.log(data)
   }, [typeIndex])
 
   if (loading) {
@@ -38,31 +43,29 @@ function Type() {
     )
   }
 
-  const moves = data.moves.map((move) => move.name)
-
   return (
     <div>
       <Navbar />
       <h1 className={`text-center text-4xl font-bold p-8 uppercase text-zinc-200 ${TypeColor[type]}`}>{type}</h1>
         <h2 className="text-center text-3xl p-5 font-semibold">Attacks</h2>
         <div className="flex flex-wrap gap-2 p-5 justify-center">
-          {moves.map((move) => (
+          {typeData.moves.sort().map((move) => (
             <div
               key={move}
               className={`px-3 py-1 ${TypeColor[type]} text-white rounded-full text-sm capitalize`}
             >
-              {move.replace('-', ' ')}
+              {move}
             </div>
           ))}
         </div>
         <h2 className="text-3xl text-center p-5 font-semibold">Pokemons</h2>
         <div className="grid grid-cols-2 md:grid-cols-6 gap-4 p-5">
-          {data.pokemon.map((pokemon) => (
+          {typeData.pokemons.sort().map((pokemon) => (
             <div
-              key={pokemon.pokemon.name}
+              key={pokemon}
               className="bg-white p-2 rounded-md uppercase shadow text-sm text-center"
             >
-              {pokemon.pokemon.name}
+              {pokemon}
             </div>
           ))}
       </div>
