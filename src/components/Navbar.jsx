@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { types } from '../context/Types'
 import Menu from './Menu'
+import menu from '../assets/menu.svg'
 
 function Navbar() {
   return (
@@ -9,7 +10,7 @@ function Navbar() {
       <span className="font-pokemonSolid text-2xl font-bold">
         <Link to="/">Pokémon Gallery</Link>
       </span>
-      <div className='hidden md:block'>
+      <div className="hidden md:block">
         <div className="flex gap-5 text-md font-semibold flex-wrap capitalize">
           <Link to="/">Home</Link>
           <Link to="/random">Random</Link>
@@ -23,7 +24,7 @@ function Navbar() {
           ))}
         </div>
       </div>
-      <Menu />
+      {open ? <img src={menu} alt="hamburger menu" className="h-6 block md:hidden" /> : <Menu />}
     </div>
   )
 }
