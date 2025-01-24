@@ -3,3 +3,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'PokemonHollow';
+  src: url('./fonts/Pokemon\ Hollow.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PokemonSolid';
+  src: url('./fonts/Pokemon\ Solid.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
