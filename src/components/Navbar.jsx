@@ -7,7 +7,7 @@ import menu from '../assets/menu.svg'
 function Navbar() {
   return (
     <div className="p-4 flex justify-between items-center">
-      <span className="font-pokemonSolid text-2xl font-bold">
+      <span className="font-pokemonHollow -tracking-tighter text-red-400 text-3xl font-bold">
         <Link to="/">Pokémon Gallery</Link>
       </span>
       <div className="hidden md:block">
