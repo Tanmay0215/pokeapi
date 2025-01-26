@@ -12,12 +12,13 @@ This is a simple project to demonstrate the use of the [PokeAPI](https://pokeapi
 - Filter pokemons by type
 - API Handling
 - Custom Font (downloaded)
+- PWA
 
 <!-- ### Learnings
 - Filtering
 - Context API
 - Local Storage
-- PWAs-->
+-->
 
 ### Links
 

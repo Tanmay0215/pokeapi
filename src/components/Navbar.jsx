@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { types } from '../context/Types'
-import Menu from './Menu'
+import Sidebar from './Sidebar'
 import menu from '../assets/menu.svg'
 
 function Navbar() {
+  const [openSidebar, setOpenSidebar] = useState(false)
   return (
     <div className="p-4 flex justify-between items-center">
       <span className="font-pokemonHollow -tracking-tighter text-red-400 text-3xl font-bold">
@@ -24,7 +25,10 @@ function Navbar() {
           ))}
         </div>
       </div>
-      {open ? <img src={menu} alt="hamburger menu" className="h-6 block md:hidden" /> : <Menu />}
+      <div className="flex md:hidden">
+        <img src={menu} alt="" className="h-6" onClick={() => setOpenSidebar(true)} />
+        <Sidebar open={openSidebar} setOpen={setOpenSidebar}/>
+      </div>
     </div>
   )
 }

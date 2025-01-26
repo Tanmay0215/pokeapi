@@ -26,7 +26,7 @@
       "src": "/mobile.png",
       "type": "image/png",
       "sizes": "567x956",
-      "form_factor": "normal"
+      "form_factor": "narrow"
     }
   ]
 }
