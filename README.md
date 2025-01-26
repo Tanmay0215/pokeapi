@@ -18,3 +18,7 @@ This is a simple project to demonstrate the use of the [PokeAPI](https://pokeapi
 - Context API
 - Local Storage
 - PWAs-->
+
+### Links
+
+- https://fontmeme.com/fonts/pokemon-font/
