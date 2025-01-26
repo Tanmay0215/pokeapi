@@ -1,0 +1,32 @@
+{
+  "short_name": "PokeAPI",
+  "name": "PokeAPI: Pokémon Data",
+  "icons": [
+    {
+      "src": "/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "background_color": "#FFCC00",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#FFCC00",
+  "description": "Access Pokémon data and information",
+  "screenshots": [
+    {
+      "src": "/desktop.png",
+      "type": "image/png",
+      "sizes": "1919x835",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/mobile.png",
+      "type": "image/png",
+      "sizes": "567x956",
+      "form_factor": "normal"
+    }
+  ]
+}
