@@ -16,6 +16,7 @@ function Navbar() {
           <Link to="/">Home</Link>
           <Link to="/random">Random</Link>
           <Link to="/notFound">Not Found</Link>
+          <Link to="/my-pokemons">My Pokemons</Link>
         </div>
         <div className="flex gap-3 text-sm font-semibold flex-wrap capitalize">
           {types.map((type) => (

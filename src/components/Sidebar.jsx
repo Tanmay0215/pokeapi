@@ -21,6 +21,9 @@ function Menu({ open, setOpen }) {
             <Link to="/random">Random</Link>
           </li>
           <li>
+            <Link to="/my-pokemons">My Pokemons</Link>
+          </li>
+          <li>
             Type
             <ol className="grid grid-cols-2 gap-2 p-5">
               {types.map((type) => (
