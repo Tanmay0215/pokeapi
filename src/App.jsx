@@ -5,10 +5,12 @@ import Random from './pages/Random.jsx'
 import Type from './pages/Type.jsx'
 import NotFound from './pages/NotFound.jsx'
 import MyPokemons from './pages/MyPokemons.jsx'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   return (
     <div className="min-h-screen font-manrope bg-zinc-100">
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/" element={<Layout />}>
