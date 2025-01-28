@@ -22,9 +22,13 @@ function Type() {
       // setData({ ...data })
       setTypeData({
         ...data,
-        moves: data.moves.map((move) => move.name).slice(0, 20),
+        moves: data.moves
+          .map((move) => move.name)
+          .sort()
+          .slice(0, 20),
         pokemons: data.pokemon
           .map((pokemon) => pokemon.pokemon.name)
+          .sort()
           .slice(0, 20),
       })
       console.log()
@@ -40,11 +44,16 @@ function Type() {
   }, [typeIndex])
 
   if (loading) {
-    return <Loader />
+    return (
+      <div className="text-center bg-white flex flex-col gap-10 justify-center items-center h-screen p-5">
+        <Loader />
+      </div>
+    )
   }
 
   return (
     <div>
+      <Navbar />
       <h1
         className={`text-center text-4xl font-bold p-8 uppercase text-zinc-200 ${TypeColor[type]}`}
       >
@@ -52,7 +61,7 @@ function Type() {
       </h1>
       <h2 className="text-center text-3xl p-5 font-semibold">Attacks</h2>
       <div className="flex flex-wrap gap-2 p-5 justify-center">
-        {typeData.moves.sort().map((move) => (
+        {typeData.moves.map((move) => (
           <div
             key={move}
             className={`px-3 py-1 ${TypeColor[type]} text-white rounded-full text-sm capitalize`}
@@ -63,7 +72,7 @@ function Type() {
       </div>
       <h2 className="text-3xl text-center p-5 font-semibold">Pokemons</h2>
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4 p-5">
-        {typeData.pokemons.sort().map((pokemon) => (
+        {typeData.pokemons.map((pokemon) => (
           <div
             key={pokemon}
             className="bg-white p-2 rounded-md uppercase shadow text-sm text-center"
@@ -72,6 +81,7 @@ function Type() {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   )
 }
