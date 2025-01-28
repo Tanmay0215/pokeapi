@@ -21,14 +21,15 @@ function Home() {
           )
           const data = await response.json()
           fetchedPokemons.push({
+            id: data.id,
             name: data.name,
             sprite: data.sprites.front_default,
-            types: data.types
+            types: data.types.map(type => type.type.name)
           })
+          localStorage.setItem('pokemons', JSON.stringify(fetchedPokemons))
         } catch (err) {
           console.log(err)
         }
-        i += 1
       }
       setPokemons(fetchedPokemons)
       setLoading(false)
@@ -39,7 +40,10 @@ function Home() {
 
   if (loading) {
     return (
+      <>
       <Loader />
+      <div>Please wait will we catch all your pokemons!!</div>
+      </>
     )
   }
 
@@ -51,7 +55,7 @@ function Home() {
         )
 
   return (
-    <div className="min-h-screen bg-zinc-100">
+    <div>
       <Navbar />
       <div className="flex p-5">
         <div className="flex flex-wrap gap-2">
@@ -73,7 +77,7 @@ function Home() {
           return (
             <div
               key={index}
-              className={`${TypeColor[pokemon.types[0].type.name]} bg-opacity-40 p-4 rounded-lg flex flex-col items-center shadow-md transform transition duration-500 hover:scale-105`}
+              className={`${TypeColor[pokemon.types[0]]} bg-opacity-40 p-4 rounded-lg flex flex-col items-center shadow-md transform transition duration-500 hover:scale-105`}
             >
               <img
                 src={pokemon.sprite}
@@ -87,9 +91,9 @@ function Home() {
                     return (
                       <span
                         key={index}
-                        className={`${TypeColor[type.type.name]} px-3 py-1 m-1 rounded-full text-xs`}
+                        className={`${TypeColor[type]} px-3 py-1 m-1 rounded-full text-xs bg-opacity-40`}
                       >
-                        {type.type.name}
+                        {type}
                       </span>
                     )
                 })}
