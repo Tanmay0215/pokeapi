@@ -2,7 +2,7 @@ import loadingGif from '../assets/loader.gif';
 
 function Loader() {
   return (
-    <div className="h-screen flex justify-center items-center bg-white">
+    <div className="">
       <img
         src={loadingGif}
         alt="Loading..."

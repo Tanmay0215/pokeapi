@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import Layout from './pages/Layout.jsx'
 import Home from './pages/Home.jsx'
 import Random from './pages/Random.jsx'
 import Type from './pages/Type.jsx'
@@ -13,11 +12,9 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<Layout />}>
-          <Route path="/random" element={<Random />} />
-          <Route path="/type/:id" element={<Type />} />
-          <Route path="/my-pokemons" element={<MyPokemons />} />
-        </Route>
+        <Route path="/random" element={<Random />} />
+        <Route path="/type/:id" element={<Type />} />
+        <Route path="/my-pokemons" element={<MyPokemons />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
