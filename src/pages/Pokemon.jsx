@@ -16,8 +16,8 @@ const Pokemon = () => {
       <div className="text-center flex justify-center items-center p-5">
         <div
           className={`flex flex-col items-center rounded-md ${
-            TypeColor[poke.types && poke.types[0]]
-          } p-5 bg-opacity-75 max-w-lg`}
+            TypeColor[poke.types[0]]
+          } p-5 bg-opacity-50 max-w-lg`}
         >
           <img src={poke.sprite} alt={poke.name} className="h-52" />
           <h1 className="capitalize text-2xl -mt-5 p-5 font-medium">
@@ -28,7 +28,7 @@ const Pokemon = () => {
               poke.types.map((type, index) => (
                 <div
                   key={index}
-                  className={`px-3 py-2 rounded-lg text-sm shadow-md bg-opacity-40 capitalize ${TypeColor[type]}`}
+                  className={`px-3 py-2 rounded-lg text-sm shadow-sm bg-opacity-30 capitalize ${TypeColor[type]}`}
                 >
                   {type}
                 </div>

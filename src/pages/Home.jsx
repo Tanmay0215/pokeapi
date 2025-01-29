@@ -132,7 +132,7 @@ function Home() {
               key={index}
               className={`${
                 TypeColor[pokemon.types[0]]
-              } bg-opacity-40 p-4 rounded-lg flex flex-col items-center shadow-md transform transition duration-500 hover:scale-105`}
+              } bg-opacity-50 p-4 rounded-lg flex flex-col items-center shadow-md transform transition duration-500 hover:scale-105`}
             >
               <img
                 src={add}
