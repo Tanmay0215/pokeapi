@@ -8,7 +8,7 @@ function MyPokemons() {
   return (
     <div>
       <Navbar />
-      <h1 className="text-4xl p-10 font-semibold text-center">
+      <h1 className="text-4xl p-10 font-semibold text-center font-pokemonSolid tracking-widest text-red-500">
         My Pokemon Collection
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 md:gap-5 gap-2 px-5">

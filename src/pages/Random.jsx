@@ -23,8 +23,7 @@ function RandomPokemon() {
           types: data.types.map((type) => type.type.name),
         })
         setLoading(false)
-        // setPokemon(localStorage.getItem('allPokemons')[i])
-        // console.log(localStorage.getItem('allPokemons').map((pokemon) => pokemon))
+        // setPokemon(JSON.parse(localStorage.getItem('allPokemons')))
       } catch (err) {
         console.log(err)
       }
@@ -43,35 +42,35 @@ function RandomPokemon() {
   return (
     <div>
       <Navbar />
-      <div className='text-center flex justify-center items-center p-5'>
-      <div
-        className={`flex flex-col items-center rounded-md ${
-          TypeColor[pokemon.types && pokemon.types[0]]
+      <div className="text-center flex justify-center items-center p-5">
+        <div
+          className={`flex flex-col items-center rounded-md ${
+            TypeColor[pokemon.types && pokemon.types[0]]
           } p-5 bg-opacity-75 max-w-lg`}
-          >
-        <img src={pokemon.sprite} alt={pokemon.name} className="h-52" />
-        <h1 className="capitalize text-2xl -mt-5 p-5 font-medium">
-          {pokemon.name}
-        </h1>
-        <div className="flex gap-2">
-          {pokemon.types &&
-            pokemon.types.map((type, index) => (
-              <div
-              key={index}
-              className={`px-3 py-2 rounded-lg text-sm shadow-md bg-opacity-40 capitalize ${TypeColor[type]}`}
-              >
-                {type}
-              </div>
-            ))}
-        </div>
-        <button
-          onClick={() => setgenerate(!generate)}
-          className="mt-5 bg-white bg-opacity-30 rounded-lg py-2 px-5"
-          >
-          Generate New
-        </button>
-      </div>
+        >
+          <img src={pokemon.sprite} alt={pokemon.name} className="h-52" />
+          <h1 className="capitalize text-2xl -mt-8 p-5 font-medium">
+            {pokemon.name}
+          </h1>
+          <div className="flex gap-2">
+            {pokemon.types &&
+              pokemon.types.map((type, index) => (
+                <div
+                  key={index}
+                  className={`px-3 py-2 rounded-lg text-sm shadow-md bg-opacity-40 capitalize ${TypeColor[type]}`}
+                >
+                  {type}
+                </div>
+              ))}
           </div>
+          <button
+            onClick={() => setgenerate(!generate)}
+            className="mt-5 bg-white bg-opacity-20 text-sm rounded-lg py-2 px-5"
+          >
+            Generate New
+          </button>
+        </div>
+      </div>
       <Footer />
     </div>
   )
