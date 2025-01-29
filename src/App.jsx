@@ -4,6 +4,7 @@ import Random from './pages/Random.jsx'
 import Type from './pages/Type.jsx'
 import NotFound from './pages/NotFound.jsx'
 import MyPokemons from './pages/MyPokemons.jsx'
+import Pokemon from './pages/Pokemon.jsx'
 import { ToastContainer } from 'react-toastify'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/random" element={<Random />} />
         <Route path="/type/:id" element={<Type />} />
         <Route path="/my-pokemons" element={<MyPokemons />} />
+        <Route path="/pokemon/:id" element={<Pokemon />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
