@@ -5,8 +5,10 @@ import { TypeColor } from '../context/Types'
 import Loader from '../components/Loader'
 import { toast } from 'react-toastify'
 import add from '../assets/add.svg'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
+  const navigate = useNavigate()
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true)
   const [myPokemons, setMyPokemons] = useState(
@@ -66,7 +68,7 @@ function Home() {
     return (
       <div className="text-center bg-white flex flex-col gap-10 justify-center items-center h-screen p-5">
         <Loader />
-        <div className="font-medium text-lg">
+        <div className="font-medium text-lg animate-pulse">
           Please wait while we catch all your pokemons!!
         </div>
       </div>
@@ -154,6 +156,9 @@ function Home() {
                   )
                 })}
               </div>
+              <button onClick={() => navigate(`/pokemon/${pokemon.id}`)} className='bg-opacity-20 text-xs rounded-full py-2 px-5 mt-2'>
+                View More
+              </button>
             </div>
           )
         })}
