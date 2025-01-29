@@ -13,7 +13,7 @@
   "background_color": "#FFCC00",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#FFCC00",
+  "theme_color": "#FFFFFF",
   "description": "Access Pokémon data and information",
   "screenshots": [
     {
