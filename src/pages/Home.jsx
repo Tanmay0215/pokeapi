@@ -41,6 +41,13 @@ function Home() {
   useEffect(() => {
     const fetchPokemons = async () => {
       let fetchedPokemons = []
+      if (localStorage.getItem('allPokemons')) {
+        fetchedPokemons = JSON.parse(localStorage.getItem('allPokemons'))
+        setPokemons(fetchedPokemons)
+        setLoading(false)
+        return
+      }
+      
       for (let i = 1; i <= 300; i++) {
         try {
           const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + i)
@@ -51,12 +58,11 @@ function Home() {
             sprite: data.sprites.front_default,
             types: data.types.map((type) => type.type.name),
           })
-          localStorage.setItem('allPokemons', JSON.stringify(fetchedPokemons))
-          localStorage.setItem('myPokemons', JSON.stringify(myPokemons))
         } catch (err) {
           console.log(err)
         }
       }
+      localStorage.setItem('allPokemons', JSON.stringify(fetchedPokemons))
       setPokemons(fetchedPokemons)
       setLoading(false)
     }
