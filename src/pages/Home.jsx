@@ -38,15 +38,19 @@ function Home() {
   useEffect(() => {
     const fetchPokemons = async () => {
       let fetchedPokemons = []
-      // if (localStorage.getItem('allPokemons')) {
-      //   fetchedPokemons = JSON.parse(localStorage.getItem('allPokemons'))
-      //   setPokemons(fetchedPokemons)
-      //   setLoading(false)
-      //   return
-      // }
-      let total = await fetch('https://pokeapi.co/api/v2/pokemon/')
-        .then((response) => response.json())
-        .then((data) => data.count)
+      if (localStorage.getItem('allPokemons')) {
+        fetchedPokemons = JSON.parse(localStorage.getItem('allPokemons'))
+        setPokemons(fetchedPokemons)
+        setLoading(false)
+        return
+      }
+
+      // let total = await fetch('https://pokeapi.co/api/v2/pokemon/')
+      //   .then((response) => response.json())
+      //   .then((data) => data.count)
+      //   .catch((err) => console.log(err))
+
+      let total = 1000;
       for (let i = 1; i <= total; i++) {
         try {
           const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + i)
