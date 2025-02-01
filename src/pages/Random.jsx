@@ -9,25 +9,22 @@ function RandomPokemon() {
   const [generate, setgenerate] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  const fetchPokemon = async () => {
     let i = Math.floor(Math.random() * 200) + 1
-    const fetchPokemon = async () => {
-      try {
-        const response = await fetch(
-          'https://pokeapi.co/api/v2/pokemon-form/' + i
-        )
-        const data = await response.json()
-        setPokemon({
-          name: data.name,
-          sprite: data.sprites.front_default,
-          types: data.types.map((type) => type.type.name),
-        })
-        setLoading(false)
-        // setPokemon(JSON.parse(localStorage.getItem('allPokemons')))
-      } catch (err) {
-        console.log(err)
-      }
+    try {
+      const data = JSON.parse(localStorage.getItem('allPokemons'))[i]
+      setPokemon({
+        name: data.name,
+        sprite: data.sprite,
+        types: data.types,
+      })
+      setLoading(false)
+    } catch (err) {
+      console.log(err)
     }
+  }
+
+  useEffect(() => {
     fetchPokemon()
   }, [generate])
 
