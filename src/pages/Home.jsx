@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { TypeColor } from '../context/Types'
 import Loader from '../components/Loader'
 import { toast } from 'react-toastify'
-import add from '../assets/add.svg'
-import { useNavigate } from 'react-router-dom'
+import PokemonCard from '../components/PokemonCard'
 
 function Home() {
-  const navigate = useNavigate()
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true)
   const [myPokemons, setMyPokemons] = useState(
@@ -41,14 +38,16 @@ function Home() {
   useEffect(() => {
     const fetchPokemons = async () => {
       let fetchedPokemons = []
-      if (localStorage.getItem('allPokemons')) {
-        fetchedPokemons = JSON.parse(localStorage.getItem('allPokemons'))
-        setPokemons(fetchedPokemons)
-        setLoading(false)
-        return
-      }
-      
-      for (let i = 1; i <= 300; i++) {
+      // if (localStorage.getItem('allPokemons')) {
+      //   fetchedPokemons = JSON.parse(localStorage.getItem('allPokemons'))
+      //   setPokemons(fetchedPokemons)
+      //   setLoading(false)
+      //   return
+      // }
+      let total = await fetch('https://pokeapi.co/api/v2/pokemon/')
+        .then((response) => response.json())
+        .then((data) => data.count)
+      for (let i = 1; i <= total; i++) {
         try {
           const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + i)
           const data = await response.json()
@@ -134,38 +133,11 @@ function Home() {
       <div className="grid grid-cols-2 gap-3 p-3 md:p-5 md:grid-cols-4 lg:grid-cols-6 md:gap-4">
         {filteredPokemons.map((pokemon, index) => {
           return (
-            <div
+            <PokemonCard
               key={index}
-              className={`${
-                TypeColor[pokemon.types[0]]
-              } bg-opacity-50 p-4 rounded-lg flex flex-col items-center shadow-md transform transition duration-500 hover:scale-105`}
-            >
-              <img
-                src={add}
-                alt="add_icon"
-                onClick={() => addToWishList(pokemon.id - 1)}
-                className="cursor-pointer h-5 bg-white/20 opacity-60 absolute top-0 right-0 m-2 rounded-full"
-              />
-              <img src={pokemon.sprite} alt={pokemon.name} />
-              <div className="text-md p-2 uppercase font-semibold">
-                {pokemon.name}
-              </div>
-              <div className="flex flex-wrap justify-center capitalize">
-                {pokemon.types.map((type, index) => {
-                  return (
-                    <span
-                      key={index}
-                      className={`${TypeColor[type]} px-3 py-1 m-1 rounded-full text-xs bg-opacity-40`}
-                    >
-                      {type}
-                    </span>
-                  )
-                })}
-              </div>
-              <button onClick={() => navigate(`/pokemon/${pokemon.id}`)} className='bg-opacity-20 text-xs rounded-full py-2 px-5 mt-2'>
-                View More
-              </button>
-            </div>
+              pokemon={pokemon}
+              addToWishList={addToWishList}
+            />
           )
         })}
       </div>
