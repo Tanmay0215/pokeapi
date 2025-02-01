@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { types } from '../context/Types'
 
 function Menu({ open, setOpen }) {
   if (open)
@@ -17,12 +16,6 @@ function Menu({ open, setOpen }) {
           <Link to="/">Home</Link>
           <Link to="/random">Random</Link>
           <Link to="/my-pokemons">My Pokemons</Link>
-          <Link>Type Stats</Link>
-          <div className="grid grid-cols-2 gap-2">
-            {types.map((type) => (
-              <Link key={type} to={`/type/${type}`} className="capitalize">{type}</Link>
-            ))}
-          </div>
         </div>
       </div>
     )
