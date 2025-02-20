@@ -12,6 +12,7 @@ function Home() {
     JSON.parse(localStorage.getItem('myPokemons')) || []
   )
   const [selectedType, setSelectedType] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
 
   const types = [
     'All',
@@ -45,20 +46,25 @@ function Home() {
         return
       }
 
-      // let total = await fetch('https://pokeapi.co/api/v2/pokemon/')
+      // let TOTAL = await fetch('https://pokeapi.co/api/v2/pokemon/')
       //   .then((response) => response.json())
       //   .then((data) => data.count)
       //   .catch((err) => console.log(err))
 
-      let total = 1000;
-      for (let i = 1; i <= total; i++) {
+      const TOTAL = 50
+      for (let i = 1; i <= TOTAL; i++) {
         try {
           const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + i)
           const data = await response.json()
           fetchedPokemons.push({
             id: data.id,
             name: data.name,
-            sprite: data.sprites.front_default,
+            sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
+            // sprite: data.sprites.front_default,
+            stats: data.stats.map((stat) => ({
+              name: stat.stat.name,
+              value: stat.base_stat,
+            })),
             types: data.types.map((type) => type.type.name),
           })
         } catch (err) {
@@ -84,27 +90,13 @@ function Home() {
     )
   }
 
-  const filteredPokemons =
-    selectedType === 'all'
-      ? pokemons
-      : pokemons.filter((pokemon) =>
-          pokemon.types.some((type) => type === selectedType)
-        )
-
-  const addToWishList = (id) => {
-    try {
-      let wishlistPokemon = pokemons[id]
-      if (myPokemons.some((pokemon) => pokemon.id === wishlistPokemon.id)) {
-        return toast.info('Pokemon already in your wishlist')
-      }
-      const newMyPokemons = [...myPokemons, { ...wishlistPokemon }]
-      setMyPokemons(newMyPokemons)
-      localStorage.setItem('myPokemons', JSON.stringify(newMyPokemons))
-      toast.success('Pokemon added to your wishlist')
-    } catch (err) {
-      toast.error('Failed to add Pokemon to wishlist')
-    }
-  }
+  const filteredPokemons = pokemons.filter((pokemon) => {
+    return (
+      (selectedType === 'all' ||
+        pokemon.types.some((type) => type === selectedType)) &&
+      pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  })
 
   const clearWishList = () => {
     setMyPokemons([])
@@ -118,6 +110,13 @@ function Home() {
     <div>
       <Navbar />
       <div className="mx-auto text-center">
+        <input
+          type="text"
+          placeholder="Search Pokémon"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="px-5 mt-5 py-2 bg-transparent rounded-lg outline-none"
+        />
         <select
           className="px-5 mt-5 py-2 bg-transparent rounded-lg outline-none"
           onChange={(e) => setSelectedType(e.target.value)}
@@ -140,7 +139,6 @@ function Home() {
             <PokemonCard
               key={index}
               pokemon={pokemon}
-              addToWishList={addToWishList}
             />
           )
         })}
