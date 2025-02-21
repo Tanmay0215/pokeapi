@@ -2,8 +2,8 @@ import fs from 'fs'
 
 const fetchPokemons = async () => {
   let allPokemons = []
-  for (let i = 1; i <= 500; i++) {
-    if (i % 50 == 0) console.log(`Fetch ${i} pokemons`)
+  for (let i = 1; i <= 100; i++) {
+    if (i % 10 == 0) console.log(`Fetched ${i} pokemons`)
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
       const data = await response.json()
@@ -21,7 +21,10 @@ const fetchPokemons = async () => {
       console.log(`Failed to fetch data for Pokémon ID ${i}:`, err)
     }
   }
-  fs.writeFileSync('allpokemons.json', JSON.stringify(allPokemons, null, 2))
+  fs.writeFileSync(
+    '../data/allpokemons.json',
+    JSON.stringify(allPokemons, null, 2)
+  )
   console.log('Pokémon data has been saved to allpokemons.json')
 }
 
