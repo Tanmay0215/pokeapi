@@ -7,7 +7,7 @@ function Navbar() {
   const [openSidebar, setOpenSidebar] = useState(false)
   return (
     <div className="p-4 flex justify-between items-center">
-      <span className="font-pokemonHollow -tracking-tighter text-red-400 text-3xl font-bold">
+      <span className="tracking-tighter text-red-400 text-3xl font-bold">
         <Link to="/">Pokémon Gallery</Link>
       </span>
       <div className="hidden md:block">

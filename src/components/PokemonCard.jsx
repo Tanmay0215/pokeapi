@@ -11,13 +11,13 @@ const PokemonCard = ({ pokemon }) => {
     >
       <img src={pokemon.sprite} alt={pokemon.name} className="h-32" onClick={()=>navigate(`/pokemon/${pokemon.id}`)} />
       <div className="text-md p-2 uppercase font-semibold">{pokemon.name}</div>
-      <div className="flex flex-wrap capitalize">
+      <div className="flex flex-wrap capitalize gap-1">
         {pokemon.types.map((type, index) => {
           return (
             <div
               key={index}
               onClick={()=>navigate(`/type/${type}`)}
-              className={`${TypeColor[type]} px-3 py-1 m-1 rounded-full text-xs bg-opacity-40 cursor-pointer`}
+              className={`${TypeColor[type]} px-3 py-1 rounded-full text-xs bg-opacity-40 cursor-pointer`}
             >
               {type}
             </div>
