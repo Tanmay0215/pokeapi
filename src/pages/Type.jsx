@@ -55,7 +55,7 @@ function Type() {
     <div>
       <Navbar />
       <h1
-        className={`text-center text-4xl font-bold p-8 uppercase text-zinc-200 ${TypeColor[type]}`}
+        className={`text-center text-4xl font-bold p-8 uppercase text-gray-100 ${TypeColor[type]}`}
       >
         {type}
       </h1>
@@ -75,7 +75,7 @@ function Type() {
         {typeData.pokemons.map((pokemon) => (
           <div
             key={pokemon}
-            className="bg-white p-2 rounded-md uppercase shadow text-sm text-center"
+            className={`bg-white p-2 rounded-md uppercase shadow text-sm text-center bg-opacity-60 ${TypeColor[type]}`}
           >
             {pokemon}
           </div>
