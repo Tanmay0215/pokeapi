@@ -1,14 +1,16 @@
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { TypeColor } from '../context/Types'
+import { useNavigate } from 'react-router-dom'
 
 function MyPokemons() {
   const myPokemons = JSON.parse(localStorage.getItem('myPokemons')) || []
+  const navigate = useNavigate()
 
   return (
     <div>
       <Navbar />
-      <h1 className="text-4xl p-10 font-semibold text-center font-pokemonSolid tracking-widest text-red-500">
+      <h1 className="text-4xl p-6 md:p-10 font-semibold text-center tracking-tighter text-red-500">
         My Pokemon Collection
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 md:gap-5 gap-2 px-5">
@@ -20,14 +22,14 @@ function MyPokemons() {
             }`}
           >
             <div>
-              <img src={pokemon.sprite} alt="" />
+              <img src={pokemon.sprite} alt="" onClick={()=>navigate(`/pokemon/${pokemon.id}`)}/>
             </div>
             <div className="uppercase font-semibold">{pokemon.name}</div>
             <div className="flex gap-1 md:gap-2">
               {pokemon.types.map((type, index) => (
                 <div
                   key={index}
-                  className={`px-3 py-2 rounded-xl text-sm capitalize bg-opacity-40 ${TypeColor[type]}`}
+                  className={`px-3 py-1 rounded-xl text-xs capitalize bg-opacity-40 ${TypeColor[type]}`}
                 >
                   {type}
                 </div>
