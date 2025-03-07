@@ -2,7 +2,7 @@ import fs from 'fs'
 
 const fetchPokemons = async () => {
   let allPokemons = []
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 200; i++) {
     if (i % 10 == 0) console.log(`Fetched ${i} pokemons`)
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
@@ -11,10 +11,6 @@ const fetchPokemons = async () => {
         id: data.id,
         name: data.name,
         sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
-        stats: data.stats.map((stat) => ({
-          name: stat.stat.name,
-          value: stat.base_stat,
-        })),
         types: data.types.map((type) => type.type.name),
       })
     } catch (err) {
