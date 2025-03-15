@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { TypeColor } from '../context/Types'
 import Loader from '../components/Loader'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -14,12 +13,7 @@ function RandomPokemon() {
     try {
       const data = JSON.parse(localStorage.getItem('allPokemons'))
       let i = Math.floor(Math.random() * data.length) + 1
-      setPokemon({
-        name: data[i].name,
-        sprite: data[i].sprite,
-        types: data[i].types,
-        stats: data[i].stats,
-      })
+      setPokemon(data[i])
       setLoading(false)
     } catch (err) {
       console.log(err)

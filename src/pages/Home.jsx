@@ -100,15 +100,18 @@ function Home() {
     <div>
       <Navbar />
       <div className="mx-auto text-center">
+        <h1 className="text-5xl font-bold p-10 font-serif text-red-700">
+          The Ultimate Pokédex
+        </h1>
         <input
           type="text"
           placeholder="Search Pokémon"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="px-5 mt-5 py-2 bg-transparent rounded-lg outline-none"
+          className="px-5 py-2 bg-transparent rounded-lg outline-none"
         />
         <select
-          className="px-5 mt-5 py-2 bg-transparent rounded-lg outline-none"
+          className="px-5 py-2 bg-transparent rounded-lg outline-none"
           onChange={(e) => setSelectedType(e.target.value)}
         >
           {types.map((type, index) => (

@@ -111,8 +111,8 @@ const Pokemon = () => {
             <ul className="list-disc list-inside">
               {pokemon.abilities &&
                 pokemon.abilities.map((ability, index) => (
-                  <li key={index} className="">
-                    {ability}
+                  <li key={index} className="capitalize">
+                    {ability.replace('-', ' ')}
                   </li>
                 ))}
             </ul>
@@ -125,7 +125,7 @@ const Pokemon = () => {
                   key={stat.name}
                   className="flex justify-between capitalize"
                 >
-                  <span>{stat.name}:</span>
+                  <span>{stat.name.replace('-', ' ')}:</span>
                   <span>{stat.value}</span>
                 </div>
               ))}
