@@ -26,6 +26,8 @@ function Menu({ open, setOpen }) {
           <Link to="/" className='p-2 border-spacing-2 border-b-2'>Home</Link>
           <Link to="/random" className='p-2 border-spacing-2 border-b-2'>Random</Link>
           <Link to="/my-pokemons" className='p-2 border-spacing-2 border-b-2'>My Pokemons</Link>
+          <Link to="/scan" className='p-2 border-spacing-2 border-b-2' >Search</Link>
+          <Link to="/shadow" className='p-2 border-spacing-2 border-b-2' >Guess the Pokemon</Link>
         </div>
       </div>
     )

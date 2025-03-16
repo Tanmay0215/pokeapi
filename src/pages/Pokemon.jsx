@@ -25,7 +25,7 @@ const Pokemon = () => {
       setPokemon({
         id: data.id,
         name: data.name,
-        sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${id}.png`,
+        sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${data.id}.png`,
         types: data.types.map((type) => type.type.name),
         weight: data.weight,
         height: data.height,
@@ -34,6 +34,7 @@ const Pokemon = () => {
           name: stat.stat.name,
           value: stat.base_stat,
         })),
+        // voice: `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${data.id}.ogg`
       })
     } catch (error) {
       console.error('Error fetching data:', error)
@@ -55,7 +56,6 @@ const Pokemon = () => {
       removeFromWishlist(id)
       setInWishlist(false)
     } else {
-      // Pass the pokemon object with the correct id
       addToWishlist(pokemon)
       setInWishlist(true)
     }
@@ -72,6 +72,7 @@ const Pokemon = () => {
   return (
     <div>
       <Navbar />
+      {/* <audio src={pokemon.voice} autoPlay /> */}
       <div className="flex flex-col md:flex-row md:gap-10 items-center justify-center rounded-md text-gray-700">
         <div className="flex flex-col justify-center">
           <img

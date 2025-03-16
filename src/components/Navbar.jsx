@@ -15,6 +15,8 @@ function Navbar() {
           <Link to="/">Home</Link>
           <Link to="/my-pokemons">My Pokemons</Link>
           <Link to="/random">Random</Link>
+          <Link to="/scan">Search</Link>
+          <Link to="/shadow">Guess the Pokemon</Link>
         </div>
       </div>
       <div className="flex md:hidden">
