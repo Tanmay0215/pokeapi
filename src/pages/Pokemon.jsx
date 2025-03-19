@@ -25,7 +25,7 @@ const Pokemon = () => {
       setPokemon({
         id: data.id,
         name: data.name,
-        sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${data.id}.png`,
+        sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
         types: data.types.map((type) => type.type.name),
         weight: data.weight,
         height: data.height,

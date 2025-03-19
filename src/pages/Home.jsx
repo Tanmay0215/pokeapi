@@ -55,7 +55,7 @@ function Home() {
         fetchedPokemons.push({
           id: data.id,
           name: data.name,
-          sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
+          sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
           // sprite: data.sprites.front_default,
           stats: data.stats.map((stat) => ({
             name: stat.stat.name,
