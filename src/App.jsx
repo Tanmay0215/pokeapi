@@ -11,7 +11,7 @@ import { ToastContainer } from 'react-toastify'
 
 function App() {
   return (
-    <div className="min-h-screen font-manrope bg-zinc-100">
+    <div className="min-h-screen font-manrope bg-gradient-to-r from-blue-100 to-purple-100">
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
