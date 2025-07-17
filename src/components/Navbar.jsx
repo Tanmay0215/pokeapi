@@ -21,7 +21,7 @@ function Navbar() {
       </div>
       <div className="flex md:hidden">
         <img src={menu} alt="" className="h-5" onClick={() => setOpenSidebar(true)} />
-        <Sidebar open={openSidebar} setOpen={setOpenSidebar}/>
+        <Sidebar open={openSidebar} setOpen={setOpenSidebar} />
       </div>
     </div>
   )
